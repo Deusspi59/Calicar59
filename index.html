@@ -1,175 +1,271 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<meta name="description" content="Calicar59 à Attiches dans le Nord (59) : achat et vente de véhicules d'occasion.">
-<meta name="keywords" content="Calicar59, voiture occasion, véhicule occasion, Attiches, Nord 59">
-<meta name="author" content="Calicar59">
+    <meta name="description"
+          content="Calicar59 à Attiches dans le Nord (59) - Achat et vente de véhicules d'occasion.">
 
-<title>Calicar59 | Achat & Vente de véhicules d'occasion</title>
+    <title>CALICAR59 — Véhicules d'occasion à Attiches</title>
 
-<link rel="stylesheet" href="style.css">
-```
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-```
-<!-- ================= HEADER ================= -->
+    <!-- ==============================
+         BACKGROUND
+    =============================== -->
 
-<header class="header">
-
-    <div class="container header-content">
-
-        <!-- LOGO -->
-        <a href="#accueil" class="logo">
-            <span class="logo-main">CALI</span><span class="logo-car">CAR</span><span class="logo-number">59</span>
-        </a>
-
-
-        <!-- MENU -->
-        <nav class="navigation">
-
-            <a href="#accueil">Accueil</a>
-
-
-            <!-- MENU CONTACTER -->
-            <div class="dropdown">
-
-                <a href="#contact" class="dropdown-button">
-                    Contacter <span>⌄</span>
-                </a>
-
-                <div class="dropdown-menu">
-
-                    <a href="tel:+33000000000">
-                        <span>📞</span>
-                        Téléphone
-                    </a>
-
-                    <a href="mailto:contact@calicar59.fr">
-                        <span>✉️</span>
-                        Mail
-                    </a>
-
-                    <a href="#sav">
-                        <span>🔧</span>
-                        S.A.V.
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- MENU VEHICULES -->
-            <div class="dropdown">
-
-                <a href="#vehicules" class="dropdown-button">
-                    Véhicules <span>⌄</span>
-                </a>
-
-                <div class="dropdown-menu">
-
-                    <a href="#occasion">
-                        <span>🚗</span>
-                        Occasion
-                    </a>
-
-                    <a href="#avenir">
-                        <span>🔜</span>
-                        À venir
-                    </a>
-
-                    <a href="#disponible">
-                        <span>✅</span>
-                        Disponible
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <a href="#services">Nos services</a>
-
-            <a href="#a-propos">À propos</a>
-
-        </nav>
-
-
-        <!-- BOUTON CONTACT -->
-        <a href="#contact" class="header-button">
-            Nous contacter
-        </a>
-
+    <div class="background">
+        <div class="mesh mesh-1"></div>
+        <div class="mesh mesh-2"></div>
+        <div class="mesh mesh-3"></div>
+        <div class="grid-background"></div>
     </div>
 
-</header>
+
+    <!-- ==============================
+         NAVIGATION
+    =============================== -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="#accueil" class="brand">
+                <span class="brand-cali">CALI</span><span class="brand-car">CAR</span>
+                <span class="brand-59">59</span>
+            </a>
 
 
-<!-- ================= HERO ================= -->
+            <nav class="nav-menu">
 
-<main>
+                <a href="#accueil" class="nav-link active">
+                    Accueil
+                </a>
 
-    <section id="accueil" class="hero">
 
-        <div class="hero-background-circle circle-one"></div>
-        <div class="hero-background-circle circle-two"></div>
+                <!-- VEHICULES -->
 
-        <div class="container hero-content">
+                <div class="nav-dropdown">
 
-            <div class="hero-text">
+                    <button class="nav-link dropdown-trigger">
+                        Véhicules
+                        <span class="arrow">⌄</span>
+                    </button>
 
-                <div class="hero-badge">
-                    🚘 CALICAR59 · ATTICHES · NORD (59)
+                    <div class="dropdown-panel">
+
+                        <a href="#stock">
+                            <span class="dropdown-icon">01</span>
+
+                            <div>
+                                <strong>Occasion</strong>
+                                <small>Notre sélection actuelle</small>
+                            </div>
+                        </a>
+
+                        <a href="#avenir">
+                            <span class="dropdown-icon">02</span>
+
+                            <div>
+                                <strong>À venir</strong>
+                                <small>Les prochains véhicules</small>
+                            </div>
+                        </a>
+
+                        <a href="#stock">
+                            <span class="dropdown-icon">03</span>
+
+                            <div>
+                                <strong>Disponible</strong>
+                                <small>Les véhicules prêts à partir</small>
+                            </div>
+                        </a>
+
+                    </div>
+
                 </div>
 
+
+                <!-- CONTACT -->
+
+                <div class="nav-dropdown">
+
+                    <button class="nav-link dropdown-trigger">
+                        Contacter
+                        <span class="arrow">⌄</span>
+                    </button>
+
+                    <div class="dropdown-panel contact-panel">
+
+                        <a href="tel:+33000000000">
+                            <span class="dropdown-icon">☎</span>
+
+                            <div>
+                                <strong>Téléphone</strong>
+                                <small>Appelez-nous directement</small>
+                            </div>
+                        </a>
+
+                        <a href="mailto:contact@calicar59.fr">
+                            <span class="dropdown-icon">✉</span>
+
+                            <div>
+                                <strong>Mail</strong>
+                                <small>Envoyez-nous un message</small>
+                            </div>
+                        </a>
+
+                        <a href="#sav">
+                            <span class="dropdown-icon">+</span>
+
+                            <div>
+                                <strong>S.A.V.</strong>
+                                <small>Service après-vente</small>
+                            </div>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <a href="#services" class="nav-link">
+                    Services
+                </a>
+
+                <a href="#apropos" class="nav-link">
+                    À propos
+                </a>
+
+            </nav>
+
+
+            <a href="#contact" class="nav-cta">
+                <span>Parlons de votre projet</span>
+                <b>↗</b>
+            </a>
+
+
+            <button class="mobile-menu-button" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==============================
+         HERO
+    =============================== -->
+
+    <main>
+
+        <section id="accueil" class="hero">
+
+            <div class="hero-content">
+
+
+                <div class="location-pill">
+
+                    <span class="location-dot"></span>
+
+                    <span>
+                        ATTICHES · NORD (59)
+                    </span>
+
+                    <span class="pill-line"></span>
+
+                    <span>
+                        FRANCE
+                    </span>
+
+                </div>
+
+
                 <h1>
-                    Votre prochaine voiture
-                    <span>vous attend chez Calicar59.</span>
+
+                    <span class="title-small">
+                        BIENVENUE CHEZ
+                    </span>
+
+                    <span class="title-main">
+                        CALICAR<span>59</span>
+                    </span>
+
+                    <span class="title-outline">
+                        VOTRE PROJET AUTOMOBILE.
+                    </span>
+
                 </h1>
 
+
                 <p class="hero-description">
-                    Achat & vente de véhicules d'occasion.
-                    Découvrez nos véhicules disponibles et trouvez
-                    celui qui correspond à votre projet.
+
+                    <strong>Achat & vente de véhicules d'occasion.</strong>
+
+                    <br>
+
+                    Découvrez une nouvelle façon de rechercher votre
+                    prochaine voiture à <strong>Attiches, dans le Nord.</strong>
+
                 </p>
 
 
-                <div class="hero-buttons">
+                <div class="hero-actions">
 
-                    <a href="#vehicules" class="btn btn-primary">
-                        🚗 Voir nos véhicules
+                    <a href="#stock" class="button button-primary">
+
+                        <span>
+                            Découvrir nos véhicules
+                        </span>
+
+                        <b>↗</b>
+
                     </a>
 
-                    <a href="#contact" class="btn btn-outline">
+
+                    <a href="#contact" class="button button-glass">
+
                         Nous contacter
+
                     </a>
 
                 </div>
 
 
-                <div class="hero-infos">
+                <div class="hero-stats">
 
-                    <div>
-                        <strong>✓</strong>
-                        Véhicules d'occasion
+                    <div class="stat">
+                        <strong>59</strong>
+                        <span>Nord</span>
                     </div>
 
-                    <div>
-                        <strong>✓</strong>
-                        Accompagnement personnalisé
+                    <div class="stat-separator"></div>
+
+                    <div class="stat">
+                        <strong>01</strong>
+                        <span>Point de vente</span>
                     </div>
 
-                    <div>
-                        <strong>✓</strong>
-                        Calicar59 à Attiches
+                    <div class="stat-separator"></div>
+
+                    <div class="stat">
+                        <strong>100%</strong>
+                        <span>Accompagnement</span>
                     </div>
 
                 </div>
@@ -177,82 +273,830 @@
             </div>
 
 
-            <div class="hero-car">
+            <!-- CARTE 3D HERO -->
 
-                <div class="hero-car-card">
+            <div class="hero-visual">
 
-                    <div class="hero-car-glow"></div>
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
 
-                    <div class="car-placeholder">
-                        🚘
-                    </div>
 
-                    <div class="hero-car-text">
-                        <span>CALICAR59</span>
-                        <strong>Votre prochain véhicule</strong>
+                <div class="floating-card card-top">
+
+                    <span class="mini-dot"></span>
+
+                    <div>
+                        <small>LOCALISATION</small>
+                        <strong>Attiches · 59</strong>
                     </div>
 
                 </div>
+
+
+                <div class="car-display">
+
+                    <div class="car-light"></div>
+
+                    <div class="car-symbol">
+                        🚘
+                    </div>
+
+                    <div class="car-reflection"></div>
+
+                </div>
+
+
+                <div class="floating-card card-bottom">
+
+                    <div class="live-indicator"></div>
+
+                    <div>
+                        <small>STOCK</small>
+                        <strong>Véhicules disponibles</strong>
+                    </div>
+
+                    <span class="arrow-circle">→</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="scroll-indicator">
+
+                <span>SCROLL</span>
+
+                <div class="scroll-line"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             INTRO
+        =============================== -->
+
+        <section class="intro-section">
+
+            <div class="section-container">
+
+                <div class="intro-label">
+                    <span>01</span>
+                    <span>CALICAR59</span>
+                </div>
+
+
+                <div class="intro-content">
+
+                    <h2>
+                        Plus qu'une voiture,
+                        <span>un projet.</span>
+                    </h2>
+
+                    <p>
+                        Chez Calicar59, nous pensons que l'achat d'un véhicule
+                        doit être simple, transparent et surtout adapté à
+                        votre quotidien.
+                    </p>
+
+                    <p>
+                        Situés à <strong>Attiches dans le Nord (59)</strong>,
+                        nous vous accompagnons dans votre recherche,
+                        votre achat ou la vente de votre véhicule.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             STOCK
+        =============================== -->
+
+        <section id="stock" class="stock-section">
+
+            <div class="section-container">
+
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            02 — NOTRE STOCK
+                        </span>
+
+                        <h2>
+                            Trouvez votre
+                            <span>prochaine voiture.</span>
+                        </h2>
+
+                    </div>
+
+
+                    <p>
+                        Une sélection de véhicules d'occasion
+                        disponibles ou prochainement disponibles.
+                    </p>
+
+                </div>
+
+
+                <div class="stock-grid">
+
+
+                    <!-- VEHICULE 1 -->
+
+                    <article class="vehicle-card">
+
+                        <div class="vehicle-picture picture-blue">
+
+                            <span class="vehicle-status">
+                                DISPONIBLE
+                            </span>
+
+                            <div class="fake-car">
+                                🚗
+                            </div>
+
+                            <span class="vehicle-number">
+                                01
+                            </span>
+
+                        </div>
+
+
+                        <div class="vehicle-info">
+
+                            <span class="vehicle-type">
+                                CITADINE
+                            </span>
+
+                            <h3>
+                                Véhicule d'occasion
+                            </h3>
+
+                            <p>
+                                Essence · Manuelle · 5 portes
+                            </p>
+
+
+                            <div class="vehicle-footer">
+
+                                <strong>
+                                    Prix sur demande
+                                </strong>
+
+                                <a href="#contact">
+                                    Voir le véhicule
+                                    <span>↗</span>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- VEHICULE 2 -->
+
+                    <article class="vehicle-card featured">
+
+                        <div class="vehicle-picture picture-cyan">
+
+                            <span class="vehicle-status">
+                                DISPONIBLE
+                            </span>
+
+                            <div class="fake-car">
+                                🚙
+                            </div>
+
+                            <span class="vehicle-number">
+                                02
+                            </span>
+
+                        </div>
+
+
+                        <div class="vehicle-info">
+
+                            <span class="vehicle-type">
+                                SUV
+                            </span>
+
+                            <h3>
+                                Véhicule d'occasion
+                            </h3>
+
+                            <p>
+                                Diesel · Automatique · 5 portes
+                            </p>
+
+
+                            <div class="vehicle-footer">
+
+                                <strong>
+                                    Prix sur demande
+                                </strong>
+
+                                <a href="#contact">
+                                    Voir le véhicule
+                                    <span>↗</span>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- VEHICULE 3 -->
+
+                    <article class="vehicle-card">
+
+                        <div class="vehicle-picture picture-dark">
+
+                            <span class="vehicle-status coming">
+                                À VENIR
+                            </span>
+
+                            <div class="fake-car">
+                                🚘
+                            </div>
+
+                            <span class="vehicle-number">
+                                03
+                            </span>
+
+                        </div>
+
+
+                        <div class="vehicle-info">
+
+                            <span class="vehicle-type">
+                                BERLINE
+                            </span>
+
+                            <h3>
+                                Prochain véhicule
+                            </h3>
+
+                            <p>
+                                Essence · Automatique · 5 portes
+                            </p>
+
+
+                            <div class="vehicle-footer">
+
+                                <strong>
+                                    Bientôt disponible
+                                </strong>
+
+                                <a href="#contact">
+                                    Être informé
+                                    <span>↗</span>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             BANDEAU
+        =============================== -->
+
+        <section id="avenir" class="future-section">
+
+            <div class="future-glow"></div>
+
+            <div class="section-container future-content">
+
+                <div>
+
+                    <span class="eyebrow">
+                        PROCHAINEMENT
+                    </span>
+
+                    <h2>
+                        De nouveaux véhicules
+                        <span>arrivent bientôt.</span>
+                    </h2>
+
+                </div>
+
+                <a href="#contact" class="button button-white">
+                    Être informé
+                    <b>↗</b>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             SERVICES
+        =============================== -->
+
+        <section id="services" class="services-section">
+
+            <div class="section-container">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            03 — NOS SERVICES
+                        </span>
+
+                        <h2>
+                            Simple.
+                            <span>Transparent.</span>
+                            Humain.
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="services-grid">
+
+
+                    <article class="service">
+
+                        <span class="service-number">
+                            01
+                        </span>
+
+                        <div class="service-icon">
+                            ↗
+                        </div>
+
+                        <h3>
+                            Achat
+                        </h3>
+
+                        <p>
+                            Vous souhaitez vendre votre véhicule ?
+                            Échangeons ensemble sur votre projet.
+                        </p>
+
+                    </article>
+
+
+                    <article class="service">
+
+                        <span class="service-number">
+                            02
+                        </span>
+
+                        <div class="service-icon">
+                            ◇
+                        </div>
+
+                        <h3>
+                            Vente
+                        </h3>
+
+                        <p>
+                            Découvrez nos véhicules d'occasion sélectionnés
+                            pour répondre à différents besoins.
+                        </p>
+
+                    </article>
+
+
+                    <article class="service">
+
+                        <span class="service-number">
+                            03
+                        </span>
+
+                        <div class="service-icon">
+                            +
+                        </div>
+
+                        <h3>
+                            Accompagnement
+                        </h3>
+
+                        <p>
+                            Une approche personnalisée pour vous accompagner
+                            avant, pendant et après votre achat.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             A PROPOS
+        =============================== -->
+
+        <section id="apropos" class="about-section">
+
+            <div class="section-container about-grid">
+
+                <div class="about-number">
+
+                    <span>59</span>
+
+                    <small>
+                        NORD
+                    </small>
+
+                </div>
+
+
+                <div class="about-content">
+
+                    <span class="eyebrow">
+                        04 — À PROPOS
+                    </span>
+
+                    <h2>
+                        Calicar59,
+                        <span>à Attiches.</span>
+                    </h2>
+
+                    <p class="large-text">
+                        Une entreprise locale dédiée à l'achat et à la vente
+                        de véhicules d'occasion.
+                    </p>
+
+                    <p>
+                        Installé à Attiches, dans le Nord, Calicar59 souhaite
+                        proposer une expérience automobile différente :
+                        moderne, claire et proche de ses clients.
+                    </p>
+
+                    <div class="location-box">
+
+                        <span>⌖</span>
+
+                        <div>
+                            <strong>Calicar59</strong>
+                            <small>Attiches · Nord (59) · France</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             SAV
+        =============================== -->
+
+        <section id="sav" class="sav-section">
+
+            <div class="section-container sav-box">
+
+                <div>
+
+                    <span class="eyebrow">
+                        SERVICE APRÈS-VENTE
+                    </span>
+
+                    <h2>
+                        Besoin d'aide après
+                        <span>votre achat ?</span>
+                    </h2>
+
+                    <p>
+                        Notre équipe reste disponible pour répondre
+                        à vos questions.
+                    </p>
+
+                </div>
+
+                <a href="#contact" class="button button-primary">
+                    Contacter le S.A.V.
+                    <b>↗</b>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==============================
+             CONTACT
+        =============================== -->
+
+        <section id="contact" class="contact-section">
+
+            <div class="section-container">
+
+                <div class="contact-heading">
+
+                    <span class="eyebrow">
+                        05 — CONTACT
+                    </span>
+
+                    <h2>
+                        Parlons de votre
+                        <span>projet automobile.</span>
+                    </h2>
+
+                </div>
+
+
+                <div class="contact-grid">
+
+
+                    <a href="tel:+33000000000" class="contact-item">
+
+                        <span class="contact-icon">
+                            ☎
+                        </span>
+
+                        <div>
+
+                            <small>
+                                TÉLÉPHONE
+                            </small>
+
+                            <strong>
+                                00 00 00 00 00
+                            </strong>
+
+                            <span>
+                                Appeler Calicar59 →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <a href="mailto:contact@calicar59.fr" class="contact-item">
+
+                        <span class="contact-icon">
+                            @
+                        </span>
+
+                        <div>
+
+                            <small>
+                                EMAIL
+                            </small>
+
+                            <strong>
+                                contact@calicar59.fr
+                            </strong>
+
+                            <span>
+                                Envoyer un email →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <div class="contact-item">
+
+                        <span class="contact-icon">
+                            ⌖
+                        </span>
+
+                        <div>
+
+                            <small>
+                                LOCALISATION
+                            </small>
+
+                            <strong>
+                                Attiches
+                            </strong>
+
+                            <span>
+                                Nord (59) · France
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==============================
+         FOOTER
+    =============================== -->
+
+    <footer class="footer">
+
+        <div class="section-container footer-top">
+
+            <div>
+
+                <a href="#accueil" class="brand footer-brand">
+                    <span class="brand-cali">CALI</span><span class="brand-car">CAR</span>
+                    <span class="brand-59">59</span>
+                </a>
+
+                <p>
+                    Achat & vente de véhicules d'occasion.
+                    <br>
+                    Attiches · Nord (59)
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <strong>
+                    Navigation
+                </strong>
+
+                <a href="#stock">Véhicules</a>
+                <a href="#services">Services</a>
+                <a href="#apropos">À propos</a>
+                <a href="#contact">Contact</a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <strong>
+                    Contact
+                </strong>
+
+                <a href="tel:+33000000000">Téléphone</a>
+                <a href="mailto:contact@calicar59.fr">Email</a>
+                <a href="#sav">S.A.V.</a>
 
             </div>
 
         </div>
 
-    </section>
+
+        <div class="section-container footer-bottom">
+
+            <span>
+                © 2026 CALICAR59
+            </span>
+
+            <span>
+                Achat · Vente · Véhicules d'occasion
+            </span>
+
+        </div>
+
+    </footer>
 
 
-    <!-- ================= VEHICULES ================= -->
+    <script>
 
-    <section id="vehicules" class="vehicles-section">
+        /* ==============================
+           NAVBAR AU SCROLL
+        =============================== */
 
-        <div class="container">
+        const navbar = document.querySelector(".navbar");
 
-            <div class="section-title">
+        window.addEventListener("scroll", () => {
 
-                <span class="section-tag">
-                    NOTRE STOCK
-                </span>
+            if (window.scrollY > 40) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
 
-                <h2>
-                    Nos véhicules
-                </h2>
-
-                <p>
-                    Retrouvez ici nos véhicules d'occasion disponibles,
-                    ainsi que les prochains véhicules à découvrir.
-                </p>
-
-            </div>
+        });
 
 
-            <div class="vehicle-tabs">
+        /* ==============================
+           APPARITION AU SCROLL
+        =============================== */
 
-                <a href="#occasion" class="vehicle-tab active">
-                    🚗 Occasion
-                </a>
+        const observer = new IntersectionObserver(
+            (entries) => {
 
-                <a href="#avenir" class="vehicle-tab">
-                    🔜 À venir
-                </a>
+                entries.forEach(entry => {
 
-                <a href="#disponible" class="vehicle-tab">
-                    ✅ Disponible
-                </a>
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
 
-            </div>
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
 
 
-            <div id="occasion" class="vehicles-grid">
+        document
+            .querySelectorAll(".vehicle-card, .service, .intro-content, .about-content, .contact-item")
+            .forEach(element => {
+
+                element.classList.add("reveal");
+
+                observer.observe(element);
+
+            });
 
 
-                <!-- VEHICULE 1 -->
+        /* ==============================
+           PARALLAXE SOURIS
+        =============================== */
 
-                <article class="vehicle-card">
+        const hero = document.querySelector(".hero");
+        const carDisplay = document.querySelector(".car-display");
 
-                    <div class="vehicle-image blue-gradient">
+        hero.addEventListener("mousemove", (event) => {
 
-                        <span class="vehicle-label">
-                            DISPO
-```
+            const x = (window.innerWidth / 2 - event.clientX) / 40;
+            const y = (window.innerHeight / 2 - event.clientY) / 40;
 
-                            
+            carDisplay.style.transform =
+                `translate(${x}px, ${y}px) rotateX(${y / 2}deg) rotateY(${-x / 2}deg)`;
+
+        });
+
+
+        hero.addEventListener("mouseleave", () => {
+
+            carDisplay.style.transform =
+                "translate(0, 0) rotateX(0) rotateY(0)";
+
+        });
+
+
+        /* ==============================
+           MENU MOBILE
+        =============================== */
+
+        const mobileButton =
+            document.querySelector(".mobile-menu-button");
+
+        const navMenu =
+            document.querySelector(".nav-menu");
+
+        mobileButton.addEventListener("click", () => {
+
+            navMenu.classList.toggle("mobile-open");
+            mobileButton.classList.toggle("open");
+
+        });
+
+
+        /* ==============================
+           FERMER LE MENU MOBILE
+        =============================== */
+
+        document.querySelectorAll(".nav-link").forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                if (window.innerWidth <= 900) {
+                    navMenu.classList.remove("mobile-open");
+                    mobileButton.classList.remove("open");
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
