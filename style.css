@@ -2844,3 +2844,53 @@ section {
     }
 
 }
+/* ACTIONS DES SERVICES CALICAR59 */
+
+.service-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.service-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 15px;
+    border: 1px solid rgba(47, 153, 255, .35);
+    border-radius: 10px;
+    background: linear-gradient(
+        135deg,
+        rgba(10, 102, 255, .25),
+        rgba(0, 217, 255, .08)
+    );
+    color: #dbe9ff;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.service-button:hover {
+    transform: translateY(-2px);
+    border-color: #35adff;
+    background: rgba(10, 102, 255, .3);
+    color: #fff;
+}
+
+.service-button-secondary {
+    background: transparent;
+}
+
+@media (max-width: 600px) {
+    .service-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .service-button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
