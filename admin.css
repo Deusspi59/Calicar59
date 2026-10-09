@@ -1,0 +1,53 @@
+/* Styles dédiés à l'administration. Le style.css du site reste inchangé. */
+.admin-page { min-height: 100vh; }
+.admin-shell { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 34px 0 48px; }
+.admin-header { display: flex; align-items: center; gap: 22px; margin-bottom: 24px; }
+.admin-header h1, .admin-panel h2 { margin: 0; }
+.admin-brand { font-size: 1.35rem; font-weight: 800; text-decoration: none; white-space: nowrap; }
+.admin-kicker { margin: 0 0 5px; letter-spacing: .15em; font-size: .72rem; font-weight: 800; opacity: .72; }
+.admin-notice { padding: 13px 16px; border: 1px solid rgba(100,160,255,.28); border-radius: 12px; background: rgba(35,100,190,.12); }
+.admin-notice[data-kind="error"] { border-color: rgba(255,90,90,.5); background: rgba(255,70,70,.1); }
+.admin-notice[data-kind="success"] { border-color: rgba(60,200,130,.4); background: rgba(60,200,130,.1); }
+.admin-panel { margin: 18px 0; padding: clamp(18px, 3vw, 28px); border: 1px solid rgba(140,170,220,.22); border-radius: 18px; background: rgba(12,24,45,.72); box-shadow: 0 16px 45px rgba(0,0,0,.12); }
+.admin-panel h2 { font-size: 1.35rem; }
+.admin-panel-heading, .admin-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.admin-muted { opacity: .72; font-size: .92rem; }
+.admin-form { display: grid; gap: 12px; margin-top: 20px; }
+.admin-form label { font-weight: 650; font-size: .9rem; }
+.admin-form input:not([type="checkbox"]):not([type="file"]), .admin-form select, .admin-form textarea {
+  box-sizing: border-box; width: 100%; min-height: 44px; padding: 11px 12px; color: inherit;
+  background: rgba(4,12,27,.75); border: 1px solid rgba(140,170,220,.32); border-radius: 9px; font: inherit;
+}
+.admin-form textarea { resize: vertical; }
+.admin-form input[type="file"] { max-width: 100%; }
+.admin-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.admin-form-grid > div { display: grid; gap: 7px; align-content: start; }
+.admin-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 42px; padding: 10px 16px; border: 1px solid rgba(80,160,255,.5); border-radius: 10px; background: linear-gradient(135deg, #176be8, #1687b9); color: white; font: inherit; font-weight: 750; cursor: pointer; text-decoration: none; }
+.admin-button:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.admin-button:disabled { opacity: .55; cursor: wait; transform: none; }
+.admin-button-muted { background: rgba(120,150,190,.12); border-color: rgba(140,170,220,.3); }
+.admin-check { display: flex; align-items: center; gap: 10px; }
+.admin-vehicle-list { display: grid; gap: 12px; margin-top: 18px; }
+.admin-vehicle-row { display: grid; grid-template-columns: 86px minmax(0,1fr) auto; align-items: center; gap: 16px; padding: 12px; border: 1px solid rgba(140,170,220,.2); border-radius: 12px; }
+.admin-vehicle-row img { width: 86px; height: 70px; object-fit: cover; border-radius: 8px; background: rgba(140,170,220,.12); }
+.admin-vehicle-row h3 { margin: 0 0 5px; font-size: 1rem; }
+.admin-vehicle-row p { margin: 3px 0; font-size: .88rem; opacity: .75; }
+.admin-row-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.admin-row-actions .admin-button { min-height: 36px; padding: 7px 10px; font-size: .82rem; }
+.admin-status { display: inline-block; padding: 4px 8px; border-radius: 999px; font-size: .75rem; font-weight: 800; background: rgba(100,150,220,.18); }
+.admin-photo-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.admin-photo-item { position: relative; }
+.admin-photo-item img { width: 100px; height: 78px; object-fit: cover; border-radius: 8px; }
+.admin-photo-item button { display: block; width: 100%; margin-top: 4px; font-size: .75rem; }
+.admin-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 30px; font-size: .85rem; opacity: .75; }
+.admin-footer a { color: inherit; }
+[hidden] { display: none !important; }
+@media (max-width: 680px) {
+  .admin-header { align-items: flex-start; flex-wrap: wrap; }
+  .admin-header > div { flex: 1; }
+  .admin-toolbar, .admin-panel-heading { align-items: stretch; flex-direction: column; }
+  .admin-form-grid { grid-template-columns: 1fr; }
+  .admin-vehicle-row { grid-template-columns: 64px minmax(0,1fr); gap: 10px; }
+  .admin-vehicle-row img { width: 64px; height: 64px; }
+  .admin-row-actions { grid-column: 1 / -1; }
+}

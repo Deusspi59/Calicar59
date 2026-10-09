@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Administration | CALICAR59</title>
+<link rel="stylesheet" href="./admin.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-page">
+  <main class="admin-shell">
+    <header class="admin-header">
+      <a class="admin-brand" href="https://calicar59.netlify.app/" aria-label="Retour au site CALICAR59">
+        <span class="brand-cali">CALI</span><span class="brand-car">CAR</span><span class="brand-59">59</span>
+      </a>
+      <div>
+        <p class="admin-kicker">ESPACE PRIVÉ</p>
+        <h1>Administration</h1>
+      </div>
+      <button id="logoutButton" class="admin-button admin-button-muted" type="button" hidden>Déconnexion</button>
+    </header>
+
+    <p id="globalNotice" class="admin-notice" role="status" aria-live="polite">
+      Préparation de l'espace d'administration…
+    </p>
+
+    <section id="configWarning" class="admin-panel" hidden>
+      <h2>Connexion Supabase à configurer</h2>
+      <p>Ouvre <code>supabase-client.js</code> et remplace les deux valeurs de configuration par l'URL du projet Supabase et sa clé publique (anon/publishable).</p>
+      <p><strong>Important :</strong> ne colle jamais la clé <code>service_role</code> ou une clé secrète dans les fichiers du site.</p>
+    </section>
+
+    <section id="loginPanel" class="admin-panel" hidden>
+      <h2>Connexion administrateur</h2>
+      <p>Connecte-toi avec le compte que tu auras créé dans Supabase Authentication.</p>
+      <form id="loginForm" class="admin-form">
+        <label for="email">Adresse e-mail</label>
+        <input id="email" name="email" type="email" autocomplete="username" required>
+        <label for="password">Mot de passe</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <button class="admin-button" type="submit">Se connecter</button>
+      </form>
+    </section>
+
+    <section id="dashboard" hidden>
+      <div class="admin-panel admin-toolbar">
+        <div>
+          <p class="admin-kicker">GESTION DU PARC</p>
+          <h2>Mes véhicules</h2>
+          <p class="admin-muted">Ajoute une annonce et ses photos. Les changements sont enregistrés dans Supabase.</p>
+        </div>
+        <button id="newVehicleButton" class="admin-button" type="button">＋ Ajouter un véhicule</button>
+      </div>
+
+      <section id="vehicleFormPanel" class="admin-panel" hidden>
+        <div class="admin-panel-heading">
+          <h2 id="vehicleFormTitle">Ajouter un véhicule</h2>
+          <button id="cancelEditButton" class="admin-button admin-button-muted" type="button">Fermer</button>
+        </div>
+        <form id="vehicleForm" class="admin-form">
+          <input id="vehicleId" type="hidden">
+          <div class="admin-form-grid">
+            <div>
+              <label for="make">Marque *</label>
+              <input id="make" name="make" required maxlength="80" placeholder="BMW">
+            </div>
+            <div>
+              <label for="model">Modèle *</label>
+              <input id="model" name="model" required maxlength="120" placeholder="Série 1 118d">
+            </div>
+            <div>
+              <label for="year">Année</label>
+              <input id="year" name="year" type="number" min="1900" max="2100" placeholder="2021">
+            </div>
+            <div>
+              <label for="mileage">Kilométrage (km)</label>
+              <input id="mileage" name="mileage" type="number" min="0" step="1" placeholder="72500">
+            </div>
+            <div>
+              <label for="fuel">Carburant</label>
+              <select id="fuel" name="fuel">
+                <option value="">Non précisé</option>
+                <option>Essence</option><option>Diesel</option><option>Hybride</option>
+                <option>Hybride rechargeable</option><option>Électrique</option><option>GPL</option><option Autre>Autre</option>
+              </select>
+            </div>
+            <div>
+              <label for="gearbox">Boîte de vitesses</label>
+              <select id="gearbox" name="gearbox">
+                <option value="">Non précisée</option><option>Manuelle</option><option>Automatique</option>
+              </select>
+            </div>
+            <div>
+              <label for="price">Prix (€)</label>
+              <input id="price" name="price" type="number" min="0" step="1" placeholder="24990">
+            </div>
+            <div>
+              <label for="doors">Nombre de portes</label>
+              <select id="doors" name="doors">
+                <option value="">Non précisé</option><option value="2">2</option><option value="3">3</option>
+                <option value="4">4</option><option value="5">5</option>
+              </select>
+            </div>
+            <div>
+              <label for="bodyType">Catégorie</label>
+              <input id="bodyType" name="bodyType" maxlength="60" placeholder="SUV, citadine, berline…">
+            </div>
+            <div>
+              <label for="status">Statut *</label>
+              <select id="status" name="status" required>
+                <option value="brouillon">Brouillon (non public)</option>
+                <option value="disponible">Disponible</option>
+                <option value="a_venir">À venir</option>
+                <option value="vendu">Vendu</option>
+              </select>
+            </div>
+          </div>
+          <label for="description">Description</label>
+          <textarea id="description" name="description" rows="4" maxlength="5000" placeholder="Équipements, historique, état du véhicule…"></textarea>
+          <label for="photos">Photos (JPG, PNG, WebP — plusieurs possibles)</label>
+          <input id="photos" name="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+          <p class="admin-muted">En modification, les nouvelles photos s'ajoutent aux photos existantes. Enregistre d'abord le véhicule avant d'ajouter ses photos.</p>
+          <div id="existingPhotos" class="admin-photo-grid"></div>
+          <label class="admin-check"><input id="featured" type="checkbox"> Mettre ce véhicule en avant</label>
+          <button class="admin-button" type="submit">Enregistrer le véhicule</button>
+        </form>
+      </section>
+
+      <section class="admin-panel">
+        <div class="admin-panel-heading">
+          <h2>Véhicules enregistrés</h2>
+          <button id="refreshButton" class="admin-button admin-button-muted" type="button">Actualiser</button>
+        </div>
+        <div id="vehicleList" class="admin-vehicle-list"></div>
+      </section>
+    </section>
+
+    <footer class="admin-footer">
+      <a href="https://calicar59.netlify.app/">← Retour au site public</a>
+      <span>CALICAR59 · Administration privée</span>
+    </footer>
+  </main>
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
