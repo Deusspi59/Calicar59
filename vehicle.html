@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Découvrez les détails de ce véhicule chez Calicar59.">
+  <title>Fiche véhicule | Calicar59</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #172033;
+      background: #f5f7fa;
+    }
+    header {
+      background: #101b30;
+      color: white;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    header a { color: white; text-decoration: none; }
+    .brand { font-size: 1.35rem; font-weight: 800; }
+    .back { padding: 10px 14px; border: 1px solid #718096; border-radius: 8px; }
+    main { max-width: 1100px; margin: 35px auto; padding: 0 18px; }
+    .panel {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 5px 24px #15223812;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .gallery img {
+      display: block;
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: 10px;
+      background: #e7edf4;
+    }
+    .status {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 6px;
+      background: #e0f2e8;
+      color: #17683c;
+      font-weight: bold;
+      font-size: .8rem;
+    }
+    h1 { margin: 14px 0; font-size: clamp(1.7rem, 4vw, 2.5rem); }
+    .price { font-size: 1.8rem; font-weight: 800; color: #1264b0; }
+    .specs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin: 24px 0;
+    }
+    .spec {
+      padding: 14px;
+      background: #f2f5f9;
+      border-radius: 9px;
+    }
+    .spec small { display: block; color: #667085; margin-bottom: 6px; }
+    .spec strong { overflow-wrap: anywhere; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    .button {
+      display: inline-block;
+      text-decoration: none;
+      border-radius: 9px;
+      padding: 13px 18px;
+      font-weight: bold;
+    }
+    .primary { background: #1264b0; color: white; }
+    .secondary { background: #e8edf4; color: #172033; }
+    .message { padding: 30px 0; text-align: center; }
+    footer { text-align: center; padding: 25px; color: #667085; }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html">CALICAR59</a>
+    <a class="back" href="index.html#accueil">← Retour au stock</a>
+  </header>
+
+  <main>
+    <section id="vehicle" class="panel" aria-live="polite">
+      <p class="message">Chargement du véhicule…</p>
+    </section>
+  </main>
+
+  <footer>CALICAR59 — Votre prochain véhicule commence ici.</footer>
+
+  <script type="module" src="./vehicle-detail.js"></script>
+</body>
+</html>
