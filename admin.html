@@ -116,10 +116,88 @@
               </select>
             </div>
           </div>
+          
+<h3>Fiche technique complémentaire</h3>
+
+<div class="admin-form-grid">
+  <div>
+    <label for="trimLevel">Finition</label>
+    <input id="trimLevel" placeholder="GT Line, M Sport…">
+  </div>
+  <div>
+    <label for="powerHp">Puissance moteur (ch)</label>
+    <input id="powerHp" type="number" min="0">
+  </div>
+  <div>
+    <label for="fiscalPower">Puissance fiscale (CV)</label>
+    <input id="fiscalPower" type="number" min="0">
+  </div>
+  <div>
+    <label for="displacementCc">Cylindrée (cm³)</label>
+    <input id="displacementCc" type="number" min="0">
+  </div>
+  <div>
+    <label for="color">Couleur</label>
+    <input id="color" placeholder="Noir métallisé">
+  </div>
+  <div>
+    <label for="seats">Nombre de places</label>
+    <input id="seats" type="number" min="1" max="20">
+  </div>
+  <div>
+    <label for="transmission">Transmission</label>
+    <select id="transmission">
+      <option value="">Non précisée</option>
+      <option value="Traction">Traction</option>
+      <option value="Propulsion">Propulsion</option>
+      <option value="4 roues motrices">4 roues motrices</option>
+    </select>
+  </div>
+  <div>
+    <label for="firstRegistration">Première mise en circulation</label>
+    <input id="firstRegistration" type="date">
+  </div>
+  <div>
+    <label for="co2Emissions">Émissions de CO₂ (g/km)</label>
+    <input id="co2Emissions" type="number" min="0">
+  </div>
+  <div>
+    <label for="euroStandard">Norme Euro</label>
+    <select id="euroStandard">
+      <option value="">Non précisée</option>
+      <option>Euro 4</option>
+      <option>Euro 5</option>
+      <option>Euro 6</option>
+      <option>Euro 6d</option>
+      <option>Euro 6e</option>
+      <option>Euro 7</option>
+    </select>
+  </div>
+  <div>
+    <label for="warranty">Garantie</label>
+    <input id="warranty" placeholder="Ex. : 12 mois">
+  </div>
+  <div>
+    <label for="serviceHistory">Historique d'entretien</label>
+    <input id="serviceHistory" placeholder="Ex. : carnet d'entretien disponible">
+  </div>
+</div>
+
+<label for="equipment">Équipements et options</label>
+<textarea id="equipment" rows="4"
+  placeholder="GPS, caméra de recul, climatisation, Bluetooth…"></textarea>
+
           <label for="description">Description</label>
           <textarea id="description" name="description" rows="4" maxlength="5000" placeholder="Équipements, historique, état du véhicule…"></textarea>
           <label for="photos">Photos (JPG, PNG, WebP — plusieurs possibles)</label>
-          <input id="photos" name="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+          
+<input
+  id="photos"
+  name="photos"
+  type="file"
+  accept="image/jpeg,image/png,image/webp"
+  multiple
+  >
           <p class="admin-muted">En modification, les nouvelles photos s'ajoutent aux photos existantes. Enregistre d'abord le véhicule avant d'ajouter ses photos.</p>
           <div id="existingPhotos" class="admin-photo-grid"></div>
           <label class="admin-check"><input id="featured" type="checkbox"> Mettre ce véhicule en avant</label>

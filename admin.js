@@ -11,6 +11,10 @@ const vehicleForm = $("vehicleForm");
 const vehicleList = $("vehicleList");
 const existingPhotos = $("existingPhotos");
 
+const photoCount = $("photoCount");
+const photoInput = $("photos");
+const MAX_PHOTOS = 10;
+
 let currentPhotos = [];
 let currentUser = null;
 
@@ -63,7 +67,18 @@ function renderExistingPhotos() {
     remove.addEventListener("click", () => {
       currentPhotos = currentPhotos.filter((_, i) => i !== index);
       renderExistingPhotos();
-    });
+    
+  if (photoCount) {
+    photoCount.textContent = `${currentPhotos.length} / ${MAX_PHOTOS} photos`;
+  }
+
+  if (photoInput) {
+    photoInput.disabled = currentPhotos.length >= MAX_PHOTOS;
+    photoInput.title = photoInput.disabled
+      ? "La limite de 10 photos est atteinte."
+      : "";
+  }
+});
     wrap.append(img, remove);
     existingPhotos.append(wrap);
   });
@@ -154,6 +169,20 @@ function editVehicle(v) {
   $("price").value = v.price ?? "";
   $("doors").value = v.doors ?? "";
   $("bodyType").value = v.body_type || "";
+  
+$("trimLevel").value = v.trim_level || "";
+$("powerHp").value = v.power_hp ?? "";
+$("fiscalPower").value = v.fiscal_power ?? "";
+$("displacementCc").value = v.displacement_cc ?? "";
+$("color").value = v.color || "";
+$("seats").value = v.seats ?? "";
+$("transmission").value = v.transmission || "";
+$("firstRegistration").value = v.first_registration || "";
+$("co2Emissions").value = v.co2_emissions ?? "";
+$("euroStandard").value = v.euro_standard || "";
+$("warranty").value = v.warranty || "";
+$("serviceHistory").value = v.service_history || "";
+$("equipment").value = v.equipment || "";
   $("status").value = v.status || "brouillon";
   $("description").value = v.description || "";
   $("featured").checked = Boolean(v.featured);
@@ -221,9 +250,26 @@ vehicleForm.addEventListener("submit", async (event) => {
       gearbox: $("gearbox").value || null,
       price: $("price").value ? Number($("price").value) : null,
       doors: $("doors").value ? Number($("doors").value) : null,
-      body_type: $("bodyType").value.trim() || null,
-      status: $("status").value,
-      description: $("description").value.trim() || null,
+      
+body_type: $("bodyType").value.trim() || null,
+
+trim_level: $("trimLevel").value.trim() || null,
+power_hp: $("powerHp").value ? Number($("powerHp").value) : null,
+fiscal_power: $("fiscalPower").value ? Number($("fiscalPower").value) : null,
+displacement_cc: $("displacementCc").value ? Number($("displacementCc").value) : null,
+color: $("color").value.trim() || null,
+seats: $("seats").value ? Number($("seats").value) : null,
+transmission: $("transmission").value || null,
+first_registration: $("firstRegistration").value || null,
+co2_emissions: $("co2Emissions").value ? Number($("co2Emissions").value) : null,
+euro_standard: $("euroStandard").value || null,
+warranty: $("warranty").value.trim() || null,
+service_history: $("serviceHistory").value.trim() || null,
+equipment: $("equipment").value.trim() || null,
+
+status: $("status").value,
+description: $("description").value.trim() || null,
+
       featured: $("featured").checked,
       photos: currentPhotos,
       updated_at: new Date().toISOString()
@@ -234,6 +280,13 @@ vehicleForm.addEventListener("submit", async (event) => {
 
     const selectedFiles = Array.from($("photos").files || []);
     if (selectedFiles.length) {
+if (currentPhotos.length + selectedFiles.length > MAX_PHOTOS) {
+  throw new Error(
+    `Maximum ${MAX_PHOTOS} photos par véhicule. ` +
+    `Il y en a déjà ${currentPhotos.length} et tu en ajoutes ${selectedFiles.length}.`
+  );
+}
+
       showNotice("Véhicule enregistré. Envoi des photos…");
       const uploadedUrls = await uploadPhotos(selectedFiles, id);
       const mergedPhotos = [...currentPhotos, ...uploadedUrls];

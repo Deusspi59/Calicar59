@@ -84,7 +84,80 @@
     .secondary { background: #e8edf4; color: #172033; }
     .message { padding: 30px 0; text-align: center; }
     footer { text-align: center; padding: 25px; color: #667085; }
-  </style>
+  
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.gallery-main {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 360px;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  object-position: center;
+  background: #f3f4f6;
+  border-radius: 14px;
+  cursor: zoom-in;
+}
+
+.gallery-thumb {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color .2s, opacity .2s;
+}
+
+.gallery-thumb:hover {
+  opacity: .85;
+}
+
+.gallery-thumb.active {
+  border-color: #1677ff;
+}
+
+@@media (max-width: 600px) {
+  .gallery-main {
+    height: 240px;
+  }
+}
+.photo-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.92);
+  cursor: zoom-out;
+}
+
+.photo-lightbox img {
+  max-width: 95vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.photo-lightbox-close {
+  position: absolute;
+  top: 16px;
+  right: 22px;
+  border: 0;
+  background: transparent;
+  color: white;
+  font-size: 42px;
+  cursor: pointer;
+}
+</style>
 </head>
 <body>
   <header>
