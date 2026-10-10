@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin.html
+
+Sitemap: https://calicar59.fr/sitemap.xml
