@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#020617">
+  <meta name="description" content="Contactez le service après-vente Calicar59 en toute confidentialité.">
+  <title>Messagerie SAV | Calicar59</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .sav-wrap {
+      position: relative;
+      z-index: 1;
+      width: min(920px, calc(100% - 32px));
+      margin: 45px auto 70px;
+    }
+
+    .sav-card {
+      padding: clamp(20px, 4vw, 36px);
+      border: 1px solid rgba(0, 131, 255, .5);
+      border-radius: 22px;
+      background: rgba(3, 17, 46, .88);
+      color: #eef5ff;
+      box-shadow: 0 20px 70px rgba(0, 55, 160, .14);
+      backdrop-filter: blur(16px);
+    }
+
+    .sav-card h1,
+    .sav-card h2 {
+      color: #fff;
+      font-family: Manrope, sans-serif;
+    }
+
+    .sav-card p {
+      color: #b8c9e5;
+      line-height: 1.7;
+    }
+
+    .sav-form {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .sav-form label {
+      display: grid;
+      gap: 7px;
+      color: #dceaff;
+      font-size: .9rem;
+    }
+
+    .sav-form input,
+    .sav-form textarea,
+    .sav-form select {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid rgba(0, 131, 255, .45);
+      border-radius: 10px;
+      background: #07152f;
+      color: #fff;
+      font: inherit;
+    }
+
+    .sav-form input:focus,
+    .sav-form textarea:focus,
+    .sav-form select:focus {
+      outline: 2px solid #00d9ff;
+      outline-offset: 1px;
+    }
+
+    .sav-btn {
+      padding: 13px 18px;
+      border: 1px solid #1683ff;
+      border-radius: 10px;
+      background: linear-gradient(100deg, #075bff, #1683ff);
+      color: white;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .sav-btn:disabled {
+      opacity: .55;
+      cursor: wait;
+    }
+
+    .sav-btn.secondary {
+      background: transparent;
+      border-color: rgba(0, 217, 255, .6);
+    }
+
+    .sav-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .sav-notice {
+      min-height: 24px;
+      overflow-wrap: anywhere;
+    }
+
+    .sav-error {
+      color: #ffb4b4 !important;
+    }
+
+    .sav-success {
+      color: #7fffd4 !important;
+    }
+
+    .sav-hidden {
+      display: none !important;
+    }
+
+    .sav-conversation {
+      margin-top: 22px;
+      padding: 16px;
+      border: 1px solid rgba(0, 131, 255, .35);
+      border-radius: 14px;
+      background: rgba(2, 6, 23, .4);
+    }
+
+    .sav-conversation button {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid rgba(0, 131, 255, .3);
+      border-radius: 9px;
+      background: #07152f;
+      color: white;
+      text-align: left;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    .sav-conversation button[aria-pressed="true"] {
+      border-color: #00d9ff;
+      background: rgba(0, 91, 255, .2);
+    }
+
+    .sav-messages {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-height: 420px;
+      overflow-y: auto;
+      margin: 18px 0;
+      padding: 4px;
+    }
+
+    .sav-message {
+      max-width: 88%;
+      padding: 12px 15px;
+      border: 1px solid rgba(0, 131, 255, .3);
+      border-radius: 13px;
+      background: #07152f;
+      overflow-wrap: anywhere;
+      white-space: pre-wrap;
+    }
+
+    .sav-message.mine {
+      align-self: flex-end;
+      background: rgba(7, 91, 255, .22);
+      border-color: rgba(0, 217, 255, .4);
+    }
+
+    .sav-message small {
+      display: block;
+      margin-top: 7px;
+      color: #91a4c4;
+      font-size: .75rem;
+    }
+
+    .sav-section-title {
+      margin-top: 30px;
+    }
+
+    #adminConversationActions {
+      margin-top: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background" aria-hidden="true">
+    <div class="mesh mesh-1"></div>
+    <div class="mesh mesh-2"></div>
+    <div class="mesh mesh-3"></div>
+    <div class="grid-background"></div>
+  </div>
+
+  <header class="vehicle-header">
+    <div class="vehicle-header-inner">
+      <a class="vehicle-brand" href="index.html">
+        CALI<span>CAR59</span>
+      </a>
+
+      <a class="vehicle-back" href="index.html">
+        ← Retour au site
+      </a>
+    </div>
+  </header>
+
+  <main class="sav-wrap">
+    <section class="sav-card">
+
+      <p class="eyebrow">
+        SERVICE APRÈS-VENTE
+      </p>
+
+      <h1>
+        Votre espace SAV
+      </h1>
+
+      <p>
+        Connectez-vous pour échanger en privé avec l'équipe Calicar59.
+        <br>
+        Adresse SAV :
+        <a
+          href="mailto:deusspi59@gmail.com"
+          style="color:#00d9ff; font-weight:700;"
+        >
+          deusspi59@gmail.com
+        </a>
+      </p>
+
+      <p
+        id="savNotice"
+        class="sav-notice"
+        role="status"
+        aria-live="polite"
+      ></p>
+
+      <section id="authPanel">
+
+        <form id="loginForm" class="sav-form">
+
+          <h2>
+            Connexion
+          </h2>
+
+          <label>
+            Adresse e-mail
+
+            <input
+              id="email"
+              type="email"
+              autocomplete="email"
+              required
+            >
+          </label>
+
+          <label>
+            Mot de passe
+
+            <input
+              id="password"
+              type="password"
+              autocomplete="current-password"
+              required
+              minlength="6"
+            >
+          </label>
+
+          <div class="sav-row">
+
+            <button
+              class="sav-btn"
+              type="submit"
+            >
+              Se connecter
+            </button>
+
+            <button
+              class="sav-btn secondary"
+              id="showSignup"
+              type="button"
+            >
+              Créer un compte
+            </button>
+
+          </div>
+
+        </form>
+
+        <form
+          id="signupForm"
+          class="sav-form sav-hidden"
+        >
+
+          <h2>
+            Créer un compte client
+          </h2>
+
+          <label>
+            Adresse e-mail
+
+            <input
+              id="signupEmail"
+              type="email"
+              autocomplete="email"
+              required
+            >
+          </label>
+
+          <label>
+            Mot de passe (6 caractères minimum)
+
+            <input
+              id="signupPassword"
+              type="password"
+              autocomplete="new-password"
+              minlength="6"
+              required
+            >
+          </label>
+
+          <div class="sav-row">
+
+            <button
+              class="sav-btn"
+              type="submit"
+            >
+              Créer mon compte
+            </button>
+
+            <button
+              class="sav-btn secondary"
+              id="showLogin"
+              type="button"
+            >
+              Retour connexion
+            </button>
+
+          </div>
+
+        </form>
+
+      </section>
+
+      <section
+        id="inboxPanel"
+        class="sav-hidden"
+      >
+
+        <p id="signedInAs"></p>
+
+        <div class="sav-row">
+
+          <button
+            id="newConversation"
+            class="sav-btn"
+            type="button"
+          >
+            Nouvelle demande SAV
+          </button>
+
+          <button
+            id="logout"
+            class="sav-btn secondary"
+            type="button"
+          >
+            Déconnexion
+          </button>
+
+        </div>
+
+        <form
+          id="newConversationForm"
+          class="sav-form sav-hidden"
+        >
+
+          <h2>
+            Nouvelle demande
+          </h2>
+
+          <label>
+            Objet
+
+            <input
+              id="subject"
+              maxlength="120"
+              required
+              placeholder="Ex. : Question après achat"
+            >
+          </label>
+
+          <label>
+            Votre message
+
+            <textarea
+              id="firstMessage"
+              rows="4"
+              maxlength="5000"
+              required
+              placeholder="Expliquez votre demande…"
+            ></textarea>
+          </label>
+
+          <button
+            class="sav-btn"
+            type="submit"
+          >
+            Envoyer ma demande
+          </button>
+
+        </form>
+
+        <h2
+          id="conversationTitle"
+          class="sav-section-title"
+        >
+          Mes conversations
+        </h2>
+
+        <div
+          id="conversationList"
+          class="sav-conversation"
+        >
+          Chargement des conversations…
+        </div>
+
+        <section
+          id="threadPanel"
+          class="sav-hidden"
+        >
+
+          <h2 id="threadTitle"></h2>
+
+          <div
+            id="adminConversationActions"
+            class="sav-row sav-hidden"
+          >
+            <button
+              id="closeConversation"
+              class="sav-btn secondary"
+              type="button"
+            >
+              Fermer la conversation
+            </button>
+          </div>
+
+          <div
+            id="messages"
+            class="sav-messages"
+            aria-live="polite"
+          ></div>
+
+          <form
+            id="replyForm"
+            class="sav-form"
+          >
+
+            <label>
+              Votre réponse
+
+              <textarea
+                id="replyText"
+                rows="3"
+                maxlength="5000"
+                required
+                placeholder="Écrivez votre message…"
+              ></textarea>
+            </label>
+
+            <button
+              class="sav-btn"
+              type="submit"
+            >
+              Envoyer le message
+            </button>
+
+          </form>
+
+        </section>
+
+      </section>
+
+    </section>
+  </main>
+
+  <footer class="vehicle-footer">
+
+    <div class="vehicle-footer-brand">
+      CALI<span>CAR59</span>
+    </div>
+
+    <p>
+      Vos échanges SAV restent privés. —
+      <a
+        href="mailto:deusspi59@gmail.com"
+        style="color:#00d9ff;"
+      >
+        deusspi59@gmail.com
+      </a>
+    </p>
+
+  </footer>
+
+  <script
+    type="module"
+    src="./sav.js"
+  ></script>
+
+</body>
+</html>

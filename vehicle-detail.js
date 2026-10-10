@@ -103,7 +103,7 @@ if (photos.length) {
   });
 
 
-  const thumbnails = [];
+const thumbnails = [];
 
   photos.forEach((url, index) => {
     const thumb = document.createElement("img");
@@ -155,6 +155,9 @@ container.append(gallery);
 
   
 const details = [
+  ["Prix", vehicle.price != null
+    ? `${Number(vehicle.price).toLocaleString("fr-FR")} €`
+    : null],
   ["Année", vehicle.year],
   ["Kilométrage", vehicle.mileage != null
     ? `${Number(vehicle.mileage).toLocaleString("fr-FR")} km`
@@ -187,6 +190,26 @@ const details = [
   ["Historique d'entretien", vehicle.service_history],
   ["Ajouté le", formatDate(vehicle.created_at)]
 ];
+details.forEach(([label, value]) => {
+  if (value === null || value === undefined || String(value).trim() === "") {
+    return;
+  }
+
+  const item = document.createElement("div");
+  item.className = "spec";
+
+  const title = document.createElement("small");
+  title.textContent = label;
+
+  const content = document.createElement("strong");
+  content.textContent = String(value);
+
+  item.append(title, content);
+  specs.append(item);
+});
+
+container.append(specs);
+
 
   details.forEach(([label, value]) => {
     if (value === null || value === undefined || value === "") return;
@@ -204,10 +227,17 @@ const details = [
     addText(container, "p", vehicle.description);
   }
   
-if (vehicle.equipment) {
+
+if (vehicle.description && vehicle.description.trim()) {
+  addText(container, "h2", "Description du véhicule");
+  addText(container, "p", vehicle.description);
+}
+
+if (vehicle.equipment && vehicle.equipment.trim()) {
   addText(container, "h2", "Équipements et options");
   addText(container, "p", vehicle.equipment);
 }
+
 
 
   const actions = document.createElement("div");
