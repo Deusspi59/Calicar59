@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Confiez votre recherche automobile à Calicar59. Décrivez le véhicule que vous recherchez et nous vous accompagnons dans votre projet."
+    >
+
+    <title>Recherche de véhicule sur mesure | CALICAR59</title>
+
+    <link rel="canonical" href="https://calicar59.fr/recherche.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .search-page {
+            position: relative;
+            z-index: 1;
+            width: min(1180px, calc(100% - 32px));
+            margin: 50px auto 90px;
+        }
+
+        .search-hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .search-hero .eyebrow {
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        .search-hero h1 {
+            margin: 0;
+            color: #ffffff;
+            font-family: Manrope, sans-serif;
+            font-size: clamp(2.5rem, 6vw, 5.3rem);
+            line-height: .98;
+            letter-spacing: -0.05em;
+        }
+
+        .search-hero h1 span {
+            color: #42a5ff;
+        }
+
+        .search-hero p {
+            max-width: 760px;
+            margin: 24px auto 0;
+            color: #aebed8;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .search-form-card {
+            position: relative;
+            overflow: hidden;
+            padding: clamp(22px, 4vw, 44px);
+            border: 1px solid rgba(0, 131, 255, .35);
+            border-radius: 28px;
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(0, 153, 255, .10),
+                    transparent 35%
+                ),
+                rgba(3, 17, 46, .88);
+            box-shadow: 0 30px 100px rgba(0, 34, 102, .20);
+            backdrop-filter: blur(18px);
+        }
+
+        .form-section {
+            padding: 28px 0;
+            border-bottom: 1px solid rgba(130, 170, 230, .12);
+        }
+
+        .form-section:first-child {
+            padding-top: 0;
+        }
+
+        .form-section:last-child {
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .form-section-heading {
+            margin-bottom: 22px;
+        }
+
+        .form-section-heading span {
+            display: block;
+            margin-bottom: 7px;
+            color: #42a5ff;
+            font-size: .78rem;
+            font-weight: 800;
+            letter-spacing: .16em;
+        }
+
+        .form-section-heading h2 {
+            margin: 0;
+            color: #ffffff;
+            font-family: Manrope, sans-serif;
+            font-size: clamp(1.35rem, 3vw, 2rem);
+        }
+
+        .form-section-heading p {
+            margin: 8px 0 0;
+            color: #91a4c4;
+            line-height: 1.6;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .form-grid.three {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .field {
+            display: grid;
+            gap: 8px;
+        }
+
+        .field.full {
+            grid-column: 1 / -1;
+        }
+
+        .field label,
+        .field-title {
+            color: #dceaff;
+            font-size: .88rem;
+            font-weight: 650;
+        }
+
+        .field input,
+        .field select,
+        .field textarea {
+            width: 100%;
+            min-height: 50px;
+            padding: 13px 14px;
+            border: 1px solid rgba(0, 131, 255, .34);
+            border-radius: 12px;
+            background: rgba(4, 17, 44, .92);
+            color: #ffffff;
+            font: inherit;
+            transition:
+                border-color .2s ease,
+                box-shadow .2s ease,
+                transform .2s ease;
+        }
+
+        .field textarea {
+            min-height: 135px;
+            resize: vertical;
+        }
+
+        .field input::placeholder,
+        .field textarea::placeholder {
+            color: #627694;
+        }
+
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
+            outline: none;
+            border-color: #00d9ff;
+            box-shadow: 0 0 0 3px rgba(0, 217, 255, .10);
+        }
+
+        .choice-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .choice {
+            position: relative;
+        }
+
+        .choice input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .choice label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 10px;
+            border: 1px solid rgba(0, 131, 255, .28);
+            border-radius: 11px;
+            background: rgba(4, 17, 44, .72);
+            color: #b9c9e2;
+            text-align: center;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        .choice input:checked + label {
+            border-color: #00d9ff;
+            background: rgba(0, 120, 255, .17);
+            color: #ffffff;
+            box-shadow: inset 0 0 0 1px rgba(0, 217, 255, .25);
+        }
+
+        .checkbox-list {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            min-height: 46px;
+            padding: 10px 12px;
+            border: 1px solid rgba(0, 131, 255, .22);
+            border-radius: 10px;
+            background: rgba(4, 17, 44, .65);
+            color: #c8d6ec;
+            cursor: pointer;
+        }
+
+        .checkbox-item input {
+            width: 17px;
+            height: 17px;
+            accent-color: #1683ff;
+        }
+
+        .trade-details {
+            margin-top: 15px;
+        }
+
+        .privacy-line {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 18px;
+            color: #91a4c4;
+            font-size: .86rem;
+            line-height: 1.55;
+        }
+
+        .privacy-line input {
+            margin-top: 4px;
+            accent-color: #1683ff;
+        }
+
+        .submit-zone {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .submit-zone p {
+            margin: 0;
+            max-width: 600px;
+            color: #7f93b2;
+            font-size: .88rem;
+            line-height: 1.55;
+        }
+
+        .search-submit {
+            min-width: 230px;
+            padding: 15px 22px;
+            border: 1px solid #1683ff;
+            border-radius: 12px;
+            background: linear-gradient(100deg, #075bff, #1683ff);
+            color: #ffffff;
+            font: inherit;
+            font-weight: 800;
+            cursor: pointer;
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease;
+        }
+
+        .search-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 38px rgba(0, 98, 255, .28);
+        }
+
+        .search-submit:disabled {
+            opacity: .55;
+            cursor: wait;
+            transform: none;
+        }
+
+        .form-notice {
+            display: none;
+            margin-top: 22px;
+            padding: 15px 17px;
+            border-radius: 12px;
+            line-height: 1.55;
+        }
+
+        .form-notice.success {
+            display: block;
+            border: 1px solid rgba(67, 255, 185, .35);
+            background: rgba(26, 163, 113, .10);
+            color: #8bffd1;
+        }
+
+        .form-notice.error {
+            display: block;
+            border: 1px solid rgba(255, 90, 90, .32);
+            background: rgba(200, 40, 40, .10);
+            color: #ffb8b8;
+        }
+
+        .search-footer-note {
+            margin-top: 24px;
+            text-align: center;
+            color: #7487a6;
+            font-size: .83rem;
+        }
+
+        @media (max-width: 900px) {
+            .form-grid,
+            .form-grid.three {
+                grid-template-columns: 1fr;
+            }
+
+            .choice-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .checkbox-list {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 560px) {
+            .choice-grid,
+            .checkbox-list {
+                grid-template-columns: 1fr;
+            }
+
+            .search-page {
+                width: min(100% - 20px, 1180px);
+                margin-top: 25px;
+            }
+
+            .search-form-card {
+                border-radius: 20px;
+            }
+
+            .search-submit {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="background" aria-hidden="true">
+        <div class="mesh mesh-1"></div>
+        <div class="mesh mesh-2"></div>
+        <div class="mesh mesh-3"></div>
+        <div class="grid-background"></div>
+    </div>
+
+    <header class="vehicle-header">
+
+        <div class="vehicle-header-inner">
+
+            <a class="vehicle-brand" href="index.html">
+                CALI<span>CAR59</span>
+            </a>
+
+            <a class="vehicle-back" href="index.html">
+                ← Retour au site
+            </a>
+
+        </div>
+
+    </header>
+
+    <main class="search-page">
+
+        <section class="search-hero">
+
+            <span class="eyebrow">
+                RECHERCHE PERSONNALISÉE
+            </span>
+
+            <h1>
+                Trouvons votre
+                <span>prochain véhicule.</span>
+            </h1>
+
+            <p>
+                Vous avez une idée précise du véhicule que vous recherchez ?
+                Indiquez-nous vos critères et Calicar59 étudiera votre projet
+                afin de rechercher un véhicule correspondant à vos attentes.
+            </p>
+
+        </section>
+
+        <form id="vehicleSearchForm" class="search-form-card">
+
+            <!-- COORDONNEES -->
+
+            <section class="form-section">
+
+                <div class="form-section-heading">
+
+                    <span>01 — VOS COORDONNÉES</span>
+
+                    <h2>
+                        Commençons par vous connaître.
+                    </h2>
+
+                    <p>
+                        Ces informations nous permettront de vous recontacter
+                        concernant votre recherche.
+                    </p>
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="field">
+
+                        <label for="firstName">
+                            Prénom *
+                        </label>
+
+                        <input
+                            id="firstName"
+                            type="text"
+                            autocomplete="given-name"
+                            required
+                            maxlength="80"
+                            placeholder="Votre prénom"
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="lastName">
+                            Nom *
+                        </label>
+
+                        <input
+                            id="lastName"
+                            type="text"
+                            autocomplete="family-name"
+                            required
+                            maxlength="80"
+                            placeholder="Votre nom"
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="email">
+                            Adresse e-mail *
+                        </label>
+
+                        <input
+                            id="email"
+                            type="email"
+                            autocomplete="email"
+                            required
+                            maxlength="160"
+                            placeholder="exemple@email.fr"
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="phone">
+                            Téléphone *
+                        </label>
+
+                        <input
+                            id="phone"
+                            type="tel"
+                            autocomplete="tel"
+                            required
+                            maxlength="30"
+                            placeholder="06 00 00 00 00"
+                        >
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- VEHICULE -->
+
+            <section class="form-section">
+
+                <div class="form-section-heading">
+
+                    <span>02 — LE VÉHICULE</span>
+
+                    <h2>
+                        Quel véhicule recherchez-vous ?
+                    </h2>
+
+                    <p>
+                        Vous pouvez laisser certains champs libres si vous êtes
+                        ouvert à plusieurs possibilités.
+                    </p>
+
+                </div>
+
+                <div class="form-grid three">
+
+                    <div class="field">
+
+                        <label for="brand">
+                            Marque
+                        </label>
+
+                        <input
+                            id="brand"
+                            type="text"
+                            maxlength="80"
+                            placeholder="BMW, Peugeot, Audi..."
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="model">
+                            Modèle
+                        </label>
+
+                        <input
+                            id="model"
+                            type="text"
+                            maxlength="100"
+                            placeholder="Série 3, 308, A3..."
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="vehicleType">
+                            Type de véhicule
+                        </label>
+
+                        <select id="vehicleType">
+
+                            <option value="">
+                                Peu importe
+                            </option>
+
+                            <option value="Citadine">
+                                Citadine
+                            </option>
+
+                            <option value="Berline">
+                                Berline
+                            </option>
+
+                            <option value="SUV">
+                                SUV
+                            </option>
+
+                            <option value="Break">
+                                Break
+                            </option>
+
+                            <option value="Coupe">
+                                Coupé
+                            </option>
+
+                            <option value="Cabriolet">
+                                Cabriolet
+                            </option>
+
+                            <option value="Monospace">
+                                Monospace
+                            </option>
+
+                            <option value="Utilitaire">
+                                Utilitaire
+                            </option>
+
+                            <option value="Pickup">
+                                Pick-up
+                            </option>
+
+                            <option value="Autre">
+                                Autre
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- MOTORISATION -->
+
+            <section class="form-section">
+
+                <div class="form-section-heading">
+
+                    <span>03 — MOTORISATION</span>
+
+                    <h2>
+                        Vos préférences mécaniques.
+                    </h2>
+
+                </div>
+
+                <div class="field full">
+
+                    <span class="field-title">
+                        Carburant
+                    </span>
+
+                    <div class="choice-grid">
+
+                        <div class="choice">
+                            <input
+                                type="radio"
+                                id="fuelAny"
+                                name="fuel"
+                                value=""
+                                checked
+                            >
+                            <label for="fuelAny">
+                                Peu importe
+                            </label>
+                        </div>
+
+                        <div class="choice">
+                            <input
+                                type="radio"
+                                id="fuelPetrol"
+                                name="fuel"
+                                value="Essence"
+                            >
+                            <label for="fuelPetrol">
+                                Essence
+                            </label>
+                        </div>
+
+                        <div class="choice">
+                            <input
+                                type="radio"
+                                id="fuelDiesel"
+                                name="fuel"
+                                value="Diesel"
+                            >
+                            <label for="fuelDiesel">
+                                Diesel
+                            </label>
+                        </div>
+
+                        <div class="choice">
+                            <input
+                                type="radio"
+                                id="fuelHybrid"
+                                name="fuel"
+                                value="Hybride"
+                            >
+                            <label for="fuelHybrid">
+                                Hybride
+                            </label>
+                        </div>
+
+                        <div class="choice">
+                            <input
+                                type="radio"
+                                id="fuelPlugIn"
+                                name="fuel"
+                                value="Hybride rechargeable"
+                            >
+                            <label for="fuelPlugIn">
+                                Hybride rechargeable
+                            </label>
+                        </div>
+
+                        <div class="choice">
+                            <input
+                                type="radio"
+                                id="fuelElectric"
+                                name="fuel"
+                                value="Electrique"
+                            >
+                            <label for="fuelElectric">
+                                Électrique
+                            </label>
+                        </div>
+
+                        <div class="choice">
+                            <input
+                                type="radio"
+                                id="fuelGPL"
+                                name="fuel"
+                                value="GPL"
+                            >
+                            <label for="fuelGPL">
+                                GPL
+                            </label>
+                        </div>
+
+                        <div class="choice">
+                            <input
+                                type="radio"
+                                id="fuelE85"
+                                name="fuel"
+                                value="E85"
+                            >
+                            <label for="fuelE85">
+                                E85
+                            </label>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-grid three" style="margin-top:18px;">
+
+                    <div class="field">
+
+                        <label for="gearbox">
+                            Boîte de vitesse
+                        </label>
+
+                        <select id="gearbox">
+
+                            <option value="">
+                                Peu importe
+                            </option>
+
+                            <option value="Manuelle">
+                                Manuelle
+                            </option>
+
+                            <option value="Automatique">
+                                Automatique
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="transmission">
+                            Transmission
+                        </label>
+
+                        <select id="transmission">
+
+                            <option value="">
+                                Peu importe
+                            </option>
+
+                            <option value="Traction">
+                                Traction
+                            </option>
+
+                            <option value="Propulsion">
+                                Propulsion
+                            </option>
+
+                            <option value="4 roues motrices">
+                                4 roues motrices
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="powerMin">
+                            Puissance minimale
+                        </label>
+
+                        <input
+                            id="powerMin"
+                            type="number"
+                            min="0"
+                            max="2000"
+                            placeholder="Ex. : 130 ch"
+                        >
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- BUDGET -->
+
+            <section class="form-section">
+
+                <div class="form-section-heading">
+
+                    <span>04 — BUDGET & KILOMÉTRAGE</span>
+
+                    <h2>
+                        Définissons vos limites.
+                    </h2>
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="field">
+
+                        <label for="budgetMin">
+                            Budget minimum
+                        </label>
+
+                        <input
+                            id="budgetMin"
+                            type="number"
+                            min="0"
+                            step="500"
+                            placeholder="Ex. : 10 000 €"
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="budgetMax">
+                            Budget maximum
+                        </label>
+
+                        <input
+                            id="budgetMax"
+                            type="number"
+                            min="0"
+                            step="500"
+                            placeholder="Ex. : 20 000 €"
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="yearMin">
+                            Année minimale
+                        </label>
+
+                        <input
+                            id="yearMin"
+                            type="number"
+                            min="1980"
+                            max="2035"
+                            placeholder="Ex. : 2019"
+                        >
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="mileageMax">
+                            Kilométrage maximum
+                        </label>
+
+                        <input
+                            id="mileageMax"
+                            type="number"
+                            min="0"
+                            step="1000"
+                            placeholder="Ex. : 80 000 km"
+                        >
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- CONFIGURATION -->
+
+            <section class="form-section">
+
+                <div class="form-section-heading">
+
+                    <span>05 — CONFIGURATION</span>
+
+                    <h2>
+                        Les détails qui comptent.
+                    </h2>
+
+                </div>
+
+                <div class="form-grid three">
+
+                    <div class="field">
+
+                        <label for="doors">
+                            Nombre de portes
+                        </label>
+
+                        <select id="doors">
+
+                            <option value="">
+                                Peu importe
+                            </option>
+
+                            <option value="3">
+                                3 portes
+                            </option>
+
+                            <option value="5">
+                                5 portes
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="seats">
+                            Nombre de places
+                        </label>
+
+                        <select id="seats">
+
+                            <option value="">
+                                Peu importe
+                            </option>
+
+                            <option value="2">
+                                2 places
+                            </option>
+
+                            <option value="4">
+                                4 places
+                            </option>
+
+                            <option value="5">
+                                5 places
+                            </option>
+
+                            <option value="7">
+                                7 places
+                            </option>
+
+                            <option value="9">
+                                9 places
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="color">
+                            Couleur souhaitée
+                        </label>
+
+                        <select id="color">
+
+                            <option value="">
+                                Peu importe
+                            </option>
+
+                            <option value="Noir">
+                                Noir
+                            </option>
+
+                            <option value="Blanc">
+                                Blanc
+                            </option>
+
+                            <option value="Gris">
+                                Gris
+                            </option>
+
+                            <option value="Bleu">
+                                Bleu
+                            </option>
+
+                            <option value="Rouge">
+                                Rouge
+                            </option>
+
+                            <option value="Vert">
+                                Vert
+                            </option>
+
+                            <option value="Beige">
+                                Beige
+                            </option>
+
+                            <option value="Marron">
+                                Marron
+                            </option>
+
+                            <option value="Autre">
+                                Autre
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="critair">
+                            Crit'Air souhaitée
+                        </label>
+
+                        <select id="critair">
+
+                            <option value="">
+                                Peu importe
+                            </option>
+
+                            <option value="0">
+                                Crit'Air 0
+                            </option>
+
+                            <option value="1">
+                                Crit'Air 1
+                            </option>
+
+                            <option value="2">
+                                Crit'Air 2 maximum
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="purchaseDelay">
+                            Délai d'achat
+                        </label>
+
+                        <select id="purchaseDelay">
+
+                            <option value="">
+                                Non défini
+                            </option>
+
+                            <option value="Immediatement">
+                                Immédiatement
+                            </option>
+
+                            <option value="Moins de 1 mois">
+                                Moins de 1 mois
+                            </option>
+
+                            <option value="1 a 3 mois">
+                                1 à 3 mois
+                            </option>
+
+                            <option value="3 a 6 mois">
+                                3 à 6 mois
+                            </option>
+
+                            <option value="Plus de 6 mois">
+                                Plus de 6 mois
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- OPTIONS -->
+
+            <section class="form-section">
+
+                <div class="form-section-heading">
+
+                    <span>06 — ÉQUIPEMENTS</span>
+
+                    <h2>
+                        Quels équipements souhaitez-vous ?
+                    </h2>
+
+                    <p>
+                        Sélectionnez tous les équipements importants pour vous.
+                    </p>
+
+                </div>
+
+                <div class="checkbox-list">
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="equipment" value="GPS">
+                        GPS / Navigation
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="equipment" value="CarPlay">
+                        Apple CarPlay / Android Auto
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="equipment" value="Camera recul">
+                        Caméra de recul
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="equipment" value="Radar stationnement">
+                        Radars de stationnement
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="equipment" value="Sieges chauffants">
+                        Sièges chauffants
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="equipment" value="Sieges cuir">
+                        Intérieur cuir
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="equipment" value="Climatisation automatique">
+                        Climatisation automatique
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="equipment" value="Regulateur adaptatif">
+                        Régulateur adaptatif
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="equipment" value="Toit ouvrant">
+                        Toit ouvrant
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="equipment" value="Toit panoramique">
+                        Toit panoramique
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="equipment" value="Attelage">
+                        Attelage
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="equipment" value="Phares LED">
+                        Phares LED
+                    </label>
+
+                </div>
+
+            </section>
+
+            <!-- REPRISE -->
+
+            <section class="form-section">
+
+                <div class="form-section-heading">
+
+                    <span>07 — REPRISE</span>
+
+                    <h2>
+                        Avez-vous un véhicule à reprendre ?
+                    </h2>
+
+                </div>
+
+                <div class="choice-grid">
+
+                    <div class="choice">
+
+                        <input
+                            type="radio"
+                            id="tradeNo"
+                            name="tradeIn"
+                            value="false"
+                            checked
+                        >
+
+                        <label for="tradeNo">
+                            Non
+                        </label>
+
+                    </div>
+
+                    <div class="choice">
+
+                        <input
+                            type="radio"
+                            id="tradeYes"
+                            name="tradeIn"
+                            value="true"
+                        >
+
+                        <label for="tradeYes">
+                            Oui
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div
+                    id="tradeDetailsContainer"
+                    class="field trade-details"
+                    style="display:none;"
+                >
+
+                    <label for="tradeInDetails">
+                        Informations sur votre véhicule actuel
+                    </label>
+
+                    <textarea
+                        id="tradeInDetails"
+                        maxlength="1500"
+                        placeholder="Marque, modèle, année, kilométrage, état général..."
+                    ></textarea>
+
+                </div>
+
+            </section>
+
+            <!-- DETAILS -->
+
+            <section class="form-section">
+
+                <div class="form-section-heading">
+
+                    <span>08 — VOTRE PROJET</span>
+
+                    <h2>
+                        Une précision supplémentaire ?
+                    </h2>
+
+                </div>
+
+                <div class="field full">
+
+                    <label for="additionalDetails">
+                        Commentaires ou critères supplémentaires
+                    </label>
+
+                    <textarea
+                        id="additionalDetails"
+                        maxlength="5000"
+                        placeholder="Exemple : finition souhaitée, véhicule familial, grand coffre, couleur à éviter, modèle alternatif accepté..."
+                    ></textarea>
+
+                </div>
+
+                <label class="privacy-line">
+
+                    <input
+                        id="privacyConsent"
+                        type="checkbox"
+                        required
+                    >
+
+                    <span>
+                        J'accepte que Calicar59 utilise les informations
+                        renseignées dans ce formulaire afin de me recontacter
+                        concernant ma demande de recherche de véhicule.
+                    </span>
+
+                </label>
+
+                <div class="submit-zone">
+
+                    <p>
+                        Votre demande sera transmise directement à Calicar59.
+                        Nous pourrons ensuite vous contacter pour préciser votre
+                        recherche si nécessaire.
+                    </p>
+
+                    <button
+                        id="submitButton"
+                        class="search-submit"
+                        type="submit"
+                    >
+                        Envoyer ma recherche →
+                    </button>
+
+                </div>
+
+                <div
+                    id="formNotice"
+                    class="form-notice"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+
+            </section>
+
+        </form>
+
+        <p class="search-footer-note">
+            CALICAR59 · Attiches · Nord (59)
+        </p>
+
+    </main>
+
+    <footer class="vehicle-footer">
+
+        <div class="vehicle-footer-brand">
+            CALI<span>CAR59</span>
+        </div>
+
+        <p>
+            Recherche personnalisée de véhicules d'occasion.
+        </p>
+
+    </footer>
+
+    <script type="module">
+
+        import { supabase } from "./supabase-client.js";
+
+        const form =
+            document.getElementById("vehicleSearchForm");
+
+        const submitButton =
+            document.getElementById("submitButton");
+
+        const notice =
+            document.getElementById("formNotice");
+
+        const tradeDetailsContainer =
+            document.getElementById("tradeDetailsContainer");
+
+        const tradeInDetails =
+            document.getElementById("tradeInDetails");
+
+        function showNotice(message, type) {
+
+            notice.textContent = message;
+
+            notice.className =
+                "form-notice " + type;
+
+        }
+
+        document
+            .querySelectorAll('input[name="tradeIn"]')
+            .forEach(function (radio) {
+
+                radio.addEventListener(
+                    "change",
+                    function () {
+
+                        const hasTradeIn =
+                            document.querySelector(
+                                'input[name="tradeIn"]:checked'
+                            ).value === "true";
+
+                        tradeDetailsContainer.style.display =
+                            hasTradeIn
+                                ? "grid"
+                                : "none";
+
+                        if (!hasTradeIn) {
+
+                            tradeInDetails.value = "";
+
+                        }
+
+                    }
+                );
+
+            });
+
+        form.addEventListener(
+            "submit",
+            async function (event) {
+
+                event.preventDefault();
+
+                submitButton.disabled = true;
+
+                showNotice(
+                    "Envoi de votre demande...",
+                    ""
+                );
+
+                try {
+
+                    const equipment =
+                        Array.from(
+                            document.querySelectorAll(
+                                'input[name="equipment"]:checked'
+                            )
+                        ).map(
+                            function (checkbox) {
+                                return checkbox.value;
+                            }
+                        );
+
+                    const fuel =
+                        document.querySelector(
+                            'input[name="fuel"]:checked'
+                        ).value;
+
+                    const tradeIn =
+                        document.querySelector(
+                            'input[name="tradeIn"]:checked'
+                        ).value === "true";
+
+                    const request = {
+
+                        first_name:
+                            document
+                                .getElementById("firstName")
+                                .value
+                                .trim(),
+
+                        last_name:
+                            document
+                                .getElementById("lastName")
+                                .value
+                                .trim(),
+
+                        email:
+                            document
+                                .getElementById("email")
+                                .value
+                                .trim(),
+
+                        phone:
+                            document
+                                .getElementById("phone")
+                                .value
+                                .trim(),
+
+                        brand:
+                            document
+                                .getElementById("brand")
+                                .value
+                                .trim() || null,
+
+                        model:
+                            document
+                                .getElementById("model")
+                                .value
+                                .trim() || null,
+
+                        vehicle_type:
+                            document
+                                .getElementById("vehicleType")
+                                .value || null,
+
+                        fuel:
+                            fuel || null,
+
+                        gearbox:
+                            document
+                                .getElementById("gearbox")
+                                .value || null,
+
+                        transmission:
+                            document
+                                .getElementById("transmission")
+                                .value || null,
+
+                        budget_min:
+                            document
+                                .getElementById("budgetMin")
+                                .value
+                                ? Number(
+                                    document
+                                        .getElementById("budgetMin")
+                                        .value
+                                )
+                                : null,
+
+                        budget_max:
+                            document
+                                .getElementById("budgetMax")
+                                .value
+                                ? Number(
+                                    document
+                                        .getElementById("budgetMax")
+                                        .value
+                                )
+                                : null,
+
+                        year_min:
+                            document
+                                .getElementById("yearMin")
+                                .value
+                                ? Number(
+                                    document
+                                        .getElementById("yearMin")
+                                        .value
+                                )
+                                : null,
+
+                        mileage_max:
+                            document
+                                .getElementById("mileageMax")
+                                .value
+                                ? Number(
+                                    document
+                                        .getElementById("mileageMax")
+                                        .value
+                                )
+                                : null,
+
+                        power_min:
+                            document
+                                .getElementById("powerMin")
+                                .value
+                                ? Number(
+                                    document
+                                        .getElementById("powerMin")
+                                        .value
+                                )
+                                : null,
+
+                        doors:
+                            document
+                                .getElementById("doors")
+                                .value || null,
+
+                        seats:
+                            document
+                                .getElementById("seats")
+                                .value || null,
+
+                        color:
+                            document
+                                .getElementById("color")
+                                .value || null,
+
+                        critair:
+                            document
+                                .getElementById("critair")
+                                .value || null,
+
+                        equipment:
+                            equipment,
+
+                        purchase_delay:
+                            document
+                                .getElementById("purchaseDelay")
+                                .value || null,
+
+                        trade_in:
+                            tradeIn,
+
+                        trade_in_details:
+                            tradeIn
+                                ? tradeInDetails.value.trim() || null
+                                : null,
+
+                        additional_details:
+                            document
+                                .getElementById("additionalDetails")
+                                .value
+                                .trim() || null
+                    };
+
+                    if (
+                        request.budget_min &&
+                        request.budget_max &&
+                        request.budget_min >
+                            request.budget_max
+                    ) {
+
+                        throw new Error(
+                            "Le budget minimum ne peut pas être supérieur au budget maximum."
+                        );
+
+                    }
+
+                    const result =
+                        await supabase
+                            .from(
+                                "vehicle_search_requests"
+                            )
+                            .insert(request);
+
+                    if (result.error) {
+
+                        throw result.error;
+
+                    }
+
+                    form.reset();
+
+                    tradeDetailsContainer.style.display =
+                        "none";
+
+                    showNotice(
+                        "Votre demande de recherche a bien été envoyée. Calicar59 pourra vous recontacter pour échanger sur votre projet.",
+                        "success"
+                    );
+
+                    window.scrollTo({
+                        top:
+                            notice.getBoundingClientRect().top +
+                            window.scrollY -
+                            140,
+                        behavior: "smooth"
+                    });
+
+                } catch (error) {
+
+                    console.error(error);
+
+                    showNotice(
+                        "Impossible d'envoyer votre demande : " +
+                            error.message,
+                        "error"
+                    );
+
+                } finally {
+
+                    submitButton.disabled = false;
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
